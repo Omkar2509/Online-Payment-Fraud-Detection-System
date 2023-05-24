@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online Transaction Fraud Detection - Result</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .result-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        min-height: 100vh;
+      }
+
+      .result-title {
+        font-weight: bold;
+        color: #1a202c;
+        padding: 2rem;
+        /* background-color: #ebf8ff; */
+        margin-bottom: 2rem;
+      }
+
+      .result-message {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #1a202c;
+        height: 100%;
+        width: 100%;
+        text-align: center;
+      }
+
+      .fraud {
+        background-color: #ffcccc;
+      }
+
+      .valid {
+        background-color: #ccffcc;
+      }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const resultElement = document.getElementById("result");
+        const resultContainerElement = document.getElementById(
+          "result-container-id"
+        );
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const isFraud = urlParams.get("isFraud");
+
+        if (isFraud === "true") {
+          resultElement.innerHTML = `
+            <h1 class="result-title">This transaction is flagged as fraudulent.</h1>
+            <p class="result-message">Omku ethe fraud che message tak </br> - Regards Mayank</p>
+          `;
+          resultContainerElement.classList.add("fraud");
+        } else {
+          resultElement.innerHTML = `
+            <h1 class="result-title">This transaction is not fraudulent.</h1>
+            <p class="result-message">Omku ethe fraud che message nako taku </br> - Regards Mayank</p>
+          `;
+          resultElement.classList.add("valid");
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <div class="result-container w-full h-screen" id="result-container-id">
+      <h1 class="text-4xl w-full font-bold py-4 text-center text-blue-800 bg-blue-100">
+        Online Transaction Fraud Detection
+        
+      </h1>
+      <div class="result-message pt-16" id="result"></div>
+      <h1><br>
+        {{pred}}<br></h1>
+    </div>
+  </body>
+</html>
