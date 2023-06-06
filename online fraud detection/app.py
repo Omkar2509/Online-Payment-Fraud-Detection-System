@@ -2,7 +2,7 @@ from flask import Flask,request, url_for, redirect, render_template
 import pickle
 import numpy as np
 
-app = Flask(__name__)
+app = Flask(__name__)   
 
 model=pickle.load(open('fraud_detection_model.pkl','rb'))
 
@@ -22,9 +22,9 @@ def predict():
     output=prediction[0]
 
     if output== "Fraud":
-        return render_template('result.html',pred='this is fraud transaction.')
+        return render_template('result.html',pred='Fraud')
     else:
-        return render_template('result.html', pred='this is not fraud transaction.')
+        return render_template('result.html', pred='Not Fraud')
 
 
 if __name__ == '__main__':
